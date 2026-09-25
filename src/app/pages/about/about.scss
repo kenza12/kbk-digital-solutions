@@ -898,6 +898,12 @@
   margin-bottom: 3rem;
 }
 
+@media (max-width: 1280px) {
+  .about-venn {
+    translate: 0 3rem;
+  }
+}
+
 @media (max-width: 1100px) {
   .about-hero,
   .about-story,
@@ -1010,5 +1016,36 @@
 
   .about-venn__lens {
     font-size: 4cqw;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-portrait {
+    &__badge {
+      gap: 0.45rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 0.7rem;
+      font-size: 0.7rem;
+
+      strong {
+        font-size: 1rem;
+      }
+
+      &--top {
+        top: auto;
+        right: -0.75rem;
+        bottom: 30%;
+      }
+
+      &--bottom {
+        bottom: 3%;
+        left: -0.75rem;
+      }
+    }
+
+    &__badge-icon {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
   }
 }

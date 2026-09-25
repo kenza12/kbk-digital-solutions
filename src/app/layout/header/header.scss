@@ -121,17 +121,120 @@
       color: var(--color-ink);
     }
   }
+
+  &__menu {
+    display: contents;
+  }
+
+  &__burger {
+    display: none;
+  }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .site-header {
     grid-template-columns: 1fr auto;
     height: auto;
-    padding: var(--space-md) var(--page-gutter);
+    padding: 1.25rem var(--page-gutter);
 
-    &__nav,
-    &__lang {
+    &.is-open {
+      background: var(--color-bg);
+      box-shadow: 0 1px 0 var(--color-line);
+    }
+
+    &__brand strong {
+      white-space: nowrap;
+    }
+
+    &__burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 2.4rem;
+      height: 2.4rem;
+      padding: 0 0.65rem;
+      border: 1px solid var(--color-line);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+
+      span {
+        height: 1.5px;
+        background: var(--color-ink);
+        transition:
+          transform 0.25s var(--ease),
+          opacity 0.2s var(--ease);
+      }
+    }
+
+    &.is-open &__burger span {
+      &:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+    }
+
+    &__menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
       display: none;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 0.5rem var(--page-gutter) 1.25rem;
+      background: var(--color-bg);
+      box-shadow: 0 1.5rem 2rem -1.5rem color-mix(in srgb, var(--color-ink) 25%, transparent);
+    }
+
+    &.is-open &__menu {
+      display: flex;
+    }
+
+    &__nav {
+      flex-direction: column;
+      gap: 0;
+      transform: none;
+
+      a {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--color-line);
+        font-family: var(--font-display);
+        font-size: clamp(1rem, 4vw, 1.15rem);
+
+        &.is-active {
+          border-bottom-color: var(--color-line);
+          color: var(--color-teal);
+        }
+      }
+    }
+
+    &__actions {
+      justify-content: space-between;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .site-header {
+    &__logo {
+      height: 34px;
+    }
+
+    &__brand {
+      gap: 0.75rem;
+
+      strong {
+        font-size: 0.8rem;
+      }
     }
   }
 }

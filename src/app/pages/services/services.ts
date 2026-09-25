@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  effect,
   ElementRef,
   inject,
   signal,
@@ -48,7 +47,6 @@ export class Services {
   private readonly viewportScroller = inject(ViewportScroller);
 
   private readonly nav = viewChild<ElementRef<HTMLElement>>('servicesNav');
-  private readonly navList = viewChild<ElementRef<HTMLElement>>('navList');
   private readonly rows = viewChildren<ElementRef<HTMLElement>>('serviceRow');
 
   protected readonly services = SERVICES;
@@ -118,8 +116,6 @@ export class Services {
       destroyRef.onDestroy(() => scrollSpy.disconnect());
     });
 
-    effect(() => this.centerActiveChip(this.activeId()));
-
     destroyRef.onDestroy(() => {
       this.viewportScroller.setOffset(SCROLL_OFFSET);
       this.document.documentElement.style.scrollBehavior = '';
@@ -170,29 +166,14 @@ export class Services {
     return observer;
   }
 
-  private centerActiveChip(id: string | null): void {
-    const list = this.navList()?.nativeElement;
-
-    if (!id || !list || list.scrollWidth <= list.clientWidth) {
-      return;
-    }
-
-    const chip = list.querySelector<HTMLElement>(`[data-anchor="${id}"]`);
-    if (!chip) {
-      return;
-    }
-
-    list.scrollTo({
-      left: chip.offsetLeft - (list.clientWidth - chip.offsetWidth) / 2,
-      behavior: this.prefersReducedMotion() ? 'auto' : 'smooth',
-    });
-  }
-
   private stickyHeight(): number {
     const root = this.document.documentElement;
     const headerHeight = parseFloat(getComputedStyle(root).getPropertyValue('--header-height'));
 
-    return (headerHeight || 0) + (this.nav()?.nativeElement.offsetHeight ?? 0);
+    const nav = this.nav()?.nativeElement;
+    const navHeight = nav && getComputedStyle(nav).position === 'sticky' ? nav.offsetHeight : 0;
+
+    return (headerHeight || 0) + navHeight;
   }
 
   private prefersReducedMotion(): boolean {

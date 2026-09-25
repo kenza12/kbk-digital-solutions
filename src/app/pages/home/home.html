@@ -71,7 +71,7 @@
 
   <div class="services__grid">
     @for (offering of offerings; track offering.title; let index = $index) {
-      <article class="service-card">
+      <article #card class="service-card" kbkReveal (pointerenter)="replayDiagram(card)">
         <p class="service-card__position">{{ formatPosition(index) }}</p>
 
         <svg class="service-card__diagram" viewBox="0 0 240 90" aria-hidden="true">

@@ -1,5 +1,5 @@
-<header class="site-header" [class.is-scrolled]="isScrolled()">
-  <a class="site-header__brand" routerLink="/">
+<header class="site-header" [class.is-scrolled]="isScrolled()" [class.is-open]="isMenuOpen()">
+  <a class="site-header__brand" routerLink="/" (click)="closeMenu()">
     <img class="site-header__logo" src="kbk-mark-color.svg" alt="KBK — Kenza Bazi-Kabbaj" />
     <span class="site-header__brand-text">
       <strong>Kenza Bazi-Kabbaj</strong>
@@ -7,31 +7,52 @@
     </span>
   </a>
 
-  <nav class="site-header__nav">
-    @for (link of links; track link.route) {
-      <a
-        [routerLink]="link.route"
-        routerLinkActive="is-active"
-        [routerLinkActiveOptions]="{ exact: link.route === '/' }"
-      >
-        {{ link.label }}
-      </a>
-    }
-  </nav>
+  <button
+    type="button"
+    class="site-header__burger"
+    aria-controls="site-menu"
+    [attr.aria-expanded]="isMenuOpen()"
+    [attr.aria-label]="isMenuOpen() ? 'Close menu' : 'Open menu'"
+    (click)="isMenuOpen.set(!isMenuOpen())"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-  <div class="site-header__actions">
-    <div class="site-header__lang">
-      @for (language of languages; track language) {
-        <button
-          type="button"
-          class="site-header__lang-button"
-          [class.is-active]="language === activeLanguage()"
-          (click)="activeLanguage.set(language)"
-          [textContent]="language"
-        ></button>
+  <div class="site-header__menu" id="site-menu">
+    <nav class="site-header__nav">
+      @for (link of links; track link.route) {
+        <a
+          [routerLink]="link.route"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: link.route === '/' }"
+          (click)="closeMenu()"
+        >
+          {{ link.label }}
+        </a>
       }
-    </div>
+    </nav>
 
-    <kbk-action-button label="Let's talk" link="/contact" variant="filled" />
+    <div class="site-header__actions">
+      <div class="site-header__lang">
+        @for (language of languages; track language) {
+          <button
+            type="button"
+            class="site-header__lang-button"
+            [class.is-active]="language === activeLanguage()"
+            (click)="activeLanguage.set(language)"
+            [textContent]="language"
+          ></button>
+        }
+      </div>
+
+      <kbk-action-button
+        label="Let's talk"
+        link="/contact"
+        variant="filled"
+        (click)="closeMenu()"
+      />
+    </div>
   </div>
 </header>

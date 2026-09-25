@@ -12,14 +12,13 @@
   </header>
 
   <nav #servicesNav class="services-nav" aria-label="Services on this page">
-    <div #navList class="services-nav__list">
+    <div class="services-nav__list">
       @for (service of services; track service.id; let index = $index) {
         <a
           class="services-nav__anchor"
           routerLink="."
           [fragment]="service.id"
           [attr.data-tone]="service.tone"
-          [attr.data-anchor]="service.id"
           [class.is-active]="activeId() === service.id"
           [attr.aria-current]="activeId() === service.id ? 'location' : null"
           (click)="onAnchorClick($event, service.id)"

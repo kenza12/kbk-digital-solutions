@@ -192,6 +192,12 @@ export class Home {
     return (index + 1).toString().padStart(2, '0');
   }
 
+  protected replayDiagram(card: HTMLElement): void {
+    card.classList.remove('is-playing');
+    void card.offsetWidth;
+    card.classList.add('is-playing');
+  }
+
   protected showTestimonial(index: number): void {
     const count = this.testimonials.length;
     this.activeIndex.set((index + count) % count);

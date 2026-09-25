@@ -75,10 +75,10 @@ export const SERVICES: Service[] = [
     ],
     work:
       'An audit of the existing code, refactoring, automated testing at every level, ' +
-      'a CI/CD pipeline that deploys without manual steps, Docker containerisation, ' +
+      'a CI/CD pipeline that deploys without manual steps, Docker containerization, ' +
       'and production incident diagnosis.',
     deliverables: [
-      'An audit report with prioritised actions',
+      'An audit report with prioritized actions',
       'A meaningful test suite',
       'An automated deployment pipeline',
       'Up-to-date technical documentation',
@@ -99,7 +99,7 @@ export const SERVICES: Service[] = [
       'Your tools can only be used by the person who wrote them',
     ],
     work:
-      'Standardising and centralising your data in a structured database. ' +
+      'Standardizing and centralizing your data in a structured database. ' +
       'Automated, reproducible analysis workflows. Packaging your tools so they install ' +
       'with a single command on any machine. Integrating them into a web platform, ' +
       'so your researchers can run them from a browser.',
@@ -107,7 +107,7 @@ export const SERVICES: Service[] = [
       'A versioned, reproducible pipeline',
       'A packaged, portable environment',
       'Your tools published and installable',
-      'Documentation written for end users, not developers',
+      'Documentation written for end users AND developers',
     ],
     technologies: ['Snakemake', 'Galaxy', 'Conda', 'Python'],
     image: 'images/services/04-scientific-data.webp',
