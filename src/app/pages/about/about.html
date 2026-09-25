@@ -1,0 +1,278 @@
+<div class="page about">
+  <header class="page-hero about-hero">
+    <div>
+      <p class="eyebrow">About</p>
+      <h1 class="page-title">Hi, I'm Kenza. <em>Nice to meet you.</em></h1>
+      <p class="lead about-hero__lead">
+        I build web applications, APIs and data tools that people actually use. For more than seven
+        years, I have worked with research labs and tech teams, turning complex needs into reliable
+        software. Today, I bring that same rigor to companies, associations and teams of every size.
+      </p>
+      <p class="about-hero__signature">Kenza</p>
+    </div>
+
+    <figure class="about-portrait">
+      <div class="about-portrait__arch" aria-hidden="true"></div>
+      <img
+        class="about-portrait__photo"
+        src="kenza-cutout.webp"
+        srcset="kenza-cutout.webp 700w, kenza-cutout@2x.webp 896w"
+        sizes="(max-width: 700px) 17rem, 22rem"
+        alt="Portrait of Kenza Bazi-Kabbaj"
+        width="700"
+        height="713"
+      />
+
+      <p class="about-portrait__note" aria-hidden="true">that's me!</p>
+
+      <p class="about-portrait__badge about-portrait__badge--top" data-tone="teal">
+        <svg class="about-portrait__badge-icon" kbkIcon="briefcase" [strokeWidth]="1.5"></svg>
+        <span><strong>7+</strong> years of experience</span>
+      </p>
+      <p class="about-portrait__badge about-portrait__badge--bottom" data-tone="plum">
+        <svg class="about-portrait__badge-icon" kbkIcon="graduation" [strokeWidth]="1.5"></svg>
+        <span><strong>MSc</strong> Bioinformatics</span>
+      </p>
+    </figure>
+  </header>
+
+  <section class="page-section about-story">
+    <div>
+      <p class="eyebrow">My story</p>
+      <h2 class="section-title">Science taught me rigor. <em>Code lets me share it.</em></h2>
+
+      <p class="about-story__paragraph">
+        I started in biology, with a bachelor's degree between Casablanca and Bordeaux, then a
+        master's in bioinformatics in Paris. Very quickly, what I enjoyed most was the code:
+        automating analyses, organizing data, and building tools other people could rely on.
+      </p>
+      <p class="about-story__paragraph">
+        For seven years, I have worked with research labs and tech teams on pipelines, databases and
+        web platforms. In 2023, I formalized my full-stack skills with a one-year Django
+        certification, then applied them in production with Angular, Django REST and cloud
+        deployment.
+      </p>
+      <p class="about-story__paragraph">
+        Science is part of my story, not a limit. I work for clients from every field, and what I
+        bring from the lab is a method: understand first, test everything, document for the next
+        person.
+      </p>
+    </div>
+
+    <figure class="about-venn" kbkReveal revealMargin="0px 0px -15% 0px">
+      <img
+        class="about-venn__image"
+        src="images/about/venn.webp"
+        alt=""
+        width="1200"
+        height="552"
+        loading="lazy"
+        decoding="async"
+      />
+
+      <div class="about-venn__side about-venn__side--science" data-tone="plum">
+        <svg class="about-venn__icon" kbkIcon="atom" [strokeWidth]="1.5"></svg>
+        <strong>Science</strong>
+        <ul class="about-venn__list">
+          <li>Complex data</li>
+          <li>Reproducible pipelines</li>
+          <li>Rigorous validation</li>
+          <li>Expert users</li>
+        </ul>
+      </div>
+
+      <div class="about-venn__side about-venn__side--software" data-tone="teal">
+        <svg class="about-venn__icon" kbkIcon="brackets" [strokeWidth]="1.5"></svg>
+        <strong>Software</strong>
+        <ul class="about-venn__list">
+          <li>Clean architecture</li>
+          <li>Tested code</li>
+          <li>CI/CD deployment</li>
+          <li>Clear documentation</li>
+        </ul>
+      </div>
+
+      <p class="about-venn__lens"><span>Your</span><span>project</span></p>
+    </figure>
+  </section>
+
+  <section class="page-section about-journey">
+    <header class="about-journey__header">
+      <p class="eyebrow">My Journey</p>
+      <h2 class="section-title">From the lab <em>to production.</em></h2>
+      <p class="lead about-journey__lead">
+        Ten years, one common thread: building tools that make other people's work easier.
+      </p>
+
+      <div class="about-research">
+        <p class="about-research__label">Research side</p>
+        <p class="about-research__intro">
+          For clients from the scientific world: my work on pipelines and research tools appears in
+          peer-reviewed publications.
+        </p>
+
+        <a
+          class="about-research__card about-research__papers"
+          [href]="orcidUrl"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="about-research__stack" aria-hidden="true">
+            @for (paper of publications; track paper.journal) {
+              <span class="about-research__sheet" [attr.data-tone]="paper.tone">
+                <span class="about-research__journal">{{ paper.journal }}</span>
+                <span class="about-research__year">{{ paper.year }}</span>
+                <span class="about-research__lines"></span>
+              </span>
+            }
+          </span>
+          <span class="about-research__count">
+            <strong>{{ publications.length }}</strong>
+            <span>peer-reviewed publications featuring my work</span>
+            <span class="about-research__link">See them on ORCID →</span>
+          </span>
+        </a>
+
+        <a
+          class="about-research__card about-research__training"
+          [href]="trainingUrl"
+          target="_blank"
+          rel="noopener"
+          data-tone="sky"
+        >
+          <span class="about-research__icon"><svg kbkIcon="book"></svg></span>
+          <span class="about-research__body">
+            <span class="about-research__source">Galaxy Training Network</span>
+            <span class="about-research__title">
+              Author of open-source tutorials for an international training network
+            </span>
+          </span>
+          <svg class="about-research__arrow" kbkIcon="arrow-up-right" [strokeWidth]="1.8"></svg>
+        </a>
+      </div>
+    </header>
+
+    <ol class="about-journey__list">
+      @for (step of journey; track step.year + step.title; let last = $last) {
+        <li class="about-journey__item" [attr.data-tone]="step.tone" [class.is-current]="last">
+          <p class="about-journey__year">
+            {{ step.year }}
+            @if (step.until) {
+              <span>{{ step.until }}</span>
+            }
+          </p>
+          <div class="about-journey__card">
+            <h3 class="about-journey__title">{{ step.title }}</h3>
+            <p class="about-journey__place">{{ step.place }}</p>
+            <p class="about-journey__text">{{ step.text }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <section class="page-section about-principles">
+    <header class="about-principles__header">
+      <p class="eyebrow">How I work</p>
+      <h2 class="section-title">Four promises, <em>on every project.</em></h2>
+    </header>
+
+    <ul class="about-principles__list">
+      @for (principle of principles; track principle.title) {
+        <li class="about-principles__card" [attr.data-tone]="principle.tone">
+          <span class="about-principles__icon"><svg [kbkIcon]="principle.icon"></svg></span>
+          <h3 class="about-principles__title">{{ principle.title }}</h3>
+          <p class="about-principles__text">{{ principle.text }}</p>
+        </li>
+      }
+    </ul>
+
+    <div class="about-modes">
+      <p class="about-modes__label">Two ways to work together</p>
+      <ul class="about-modes__list">
+        @for (mode of workModes; track mode.title) {
+          <li class="about-modes__card" [attr.data-tone]="mode.tone">
+            <figure class="about-modes__visual">
+              <img
+                [src]="mode.image"
+                alt=""
+                width="1200"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+
+            <div>
+              <div class="about-modes__head">
+                <span class="about-modes__icon"><svg [kbkIcon]="mode.icon"></svg></span>
+                <div>
+                  <h3 class="about-modes__title">{{ mode.title }}</h3>
+                  <p class="about-modes__subtitle">{{ mode.subtitle }}</p>
+                </div>
+              </div>
+
+              <p class="about-modes__text">{{ mode.text }}</p>
+
+              <ul class="about-modes__tags">
+                @for (tag of mode.tags; track tag) {
+                  <li>{{ tag }}</li>
+                }
+              </ul>
+
+              @if (mode.note) {
+                <p class="about-modes__note">{{ mode.note }}</p>
+              }
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-section about-toolbox">
+    <div class="about-toolbox__panel">
+      <header class="about-toolbox__header">
+        <p class="eyebrow">Toolbox</p>
+        <h2 class="section-title">The tools <em>I use every day.</em></h2>
+      </header>
+
+      <div class="about-toolbox__groups">
+        @for (group of toolbox; track group.title) {
+          <div>
+            <h3 class="about-toolbox__group-title">{{ group.title }}</h3>
+            <ul class="about-toolbox__tools">
+              @for (tool of group.tools; track tool) {
+                <li>{{ tool }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section about-life">
+    <header>
+      <p class="eyebrow">Outside the code</p>
+      <h2 class="section-title">When I'm not <em>coding.</em></h2>
+      <p class="lead about-life__lead">
+        I work remotely from Auvergne, in the heart of France. A few things that keep me curious:
+      </p>
+    </header>
+
+    <ul class="about-life__list">
+      @for (interest of interests; track interest.title) {
+        <li class="about-life__tile" [attr.data-tone]="interest.tone">
+          <span class="about-life__icon"><svg [kbkIcon]="interest.icon"></svg></span>
+          <div>
+            <h3 class="about-life__title">{{ interest.title }}</h3>
+            <p class="about-life__text">{{ interest.text }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </section>
+</div>
+
+<kbk-cta-section shape="card" />

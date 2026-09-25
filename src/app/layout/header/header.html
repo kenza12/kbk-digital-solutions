@@ -1,0 +1,37 @@
+<header class="site-header" [class.is-scrolled]="isScrolled()">
+  <a class="site-header__brand" routerLink="/">
+    <img class="site-header__logo" src="kbk-mark-color.svg" alt="KBK — Kenza Bazi-Kabbaj" />
+    <span class="site-header__brand-text">
+      <strong>Kenza Bazi-Kabbaj</strong>
+      <small>Digital Solutions</small>
+    </span>
+  </a>
+
+  <nav class="site-header__nav">
+    @for (link of links; track link.route) {
+      <a
+        [routerLink]="link.route"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: link.route === '/' }"
+      >
+        {{ link.label }}
+      </a>
+    }
+  </nav>
+
+  <div class="site-header__actions">
+    <div class="site-header__lang">
+      @for (language of languages; track language) {
+        <button
+          type="button"
+          class="site-header__lang-button"
+          [class.is-active]="language === activeLanguage()"
+          (click)="activeLanguage.set(language)"
+          [textContent]="language"
+        ></button>
+      }
+    </div>
+
+    <kbk-action-button label="Let's talk" link="/contact" variant="filled" />
+  </div>
+</header>

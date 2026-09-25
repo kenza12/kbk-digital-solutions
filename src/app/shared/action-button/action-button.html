@@ -1,0 +1,14 @@
+@if (isExternal()) {
+  <a class="action-button" [class]="variant()" [href]="link()">
+    <ng-container [ngTemplateOutlet]="content" />
+  </a>
+} @else {
+  <a class="action-button" [class]="variant()" [routerLink]="link()">
+    <ng-container [ngTemplateOutlet]="content" />
+  </a>
+}
+
+<ng-template #content>
+  <span>{{ label() }}</span>
+  <svg kbkIcon="arrow" [strokeWidth]="2"></svg>
+</ng-template>

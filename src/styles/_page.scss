@@ -1,0 +1,89 @@
+.page {
+  --accent: var(--color-teal);
+  --accent-bg: var(--tone-teal-bg);
+
+  padding: 0 var(--space-md);
+  overflow-x: clip;
+}
+
+.page-hero {
+  position: relative;
+  max-width: calc(var(--container-max) + 20rem);
+  margin: 0 auto;
+  padding: var(--space-lg) 3rem var(--space-md);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -14rem;
+    right: -12rem;
+    width: 36rem;
+    height: 36rem;
+    border: 4.5rem solid color-mix(in srgb, var(--color-teal) 4%, transparent);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+  }
+}
+
+.page-section {
+  max-width: calc(var(--container-max) + 20rem);
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+
+  &--small {
+    font-size: 0.72rem;
+  }
+
+  &--large {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+.page-title,
+.section-title {
+  margin: 0;
+
+  em {
+    font-style: italic;
+    color: var(--color-forest);
+  }
+}
+
+.page-title {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1.05;
+}
+
+.section-title {
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  line-height: 1.15;
+}
+
+.lead {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+@media (max-width: 700px) {
+  .page-hero,
+  .page-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

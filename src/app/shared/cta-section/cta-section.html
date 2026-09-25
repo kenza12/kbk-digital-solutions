@@ -1,0 +1,37 @@
+<section class="cta" id="contact">
+  <div class="cta__panel">
+    <span class="cta__shape cta__shape--left" aria-hidden="true"></span>
+    <span class="cta__shape cta__shape--ring" aria-hidden="true"></span>
+    <span class="cta__shape cta__shape--right" aria-hidden="true"></span>
+
+    <div class="cta__inner">
+      <div class="cta__text">
+        <p class="cta__eyebrow">Let's work together</p>
+        <h2 class="cta__title">Have a project <br /><em>in mind?</em></h2>
+      </div>
+
+      <ul class="cta__highlights">
+        @for (highlight of highlights; track highlight.title) {
+          <li class="cta__highlight">
+            <span class="cta__highlight-icon">
+              <svg [kbkIcon]="highlight.icon" [strokeWidth]="1.7"></svg>
+            </span>
+            <span class="cta__highlight-text">
+              <strong>{{ highlight.title }}</strong>
+              <small>{{ highlight.detail }}</small>
+            </span>
+          </li>
+        }
+      </ul>
+
+      <div class="cta__action">
+        <kbk-action-button label="Get in touch" link="/contact" variant="on-dark" />
+        <p class="cta__note">I'll get back to you within 24 hours on weekdays.</p>
+      </div>
+
+      <p class="cta__signature" aria-hidden="true">
+        Let's build<br />something great<br />together.
+      </p>
+    </div>
+  </div>
+</section>

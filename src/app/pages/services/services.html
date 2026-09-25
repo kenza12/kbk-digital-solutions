@@ -1,0 +1,171 @@
+<div class="page services-page">
+  <header class="page-hero services-hero">
+    <div>
+      <p class="eyebrow eyebrow--large">Services</p>
+      <h1 class="page-title">What I can <em>build for you.</em></h1>
+    </div>
+
+    <p class="lead services-hero__lead">
+      Whether you are starting from scratch or improving something that already exists, here is what
+      I do and what you actually get out of it.
+    </p>
+  </header>
+
+  <nav #servicesNav class="services-nav" aria-label="Services on this page">
+    <div #navList class="services-nav__list">
+      @for (service of services; track service.id; let index = $index) {
+        <a
+          class="services-nav__anchor"
+          routerLink="."
+          [fragment]="service.id"
+          [attr.data-tone]="service.tone"
+          [attr.data-anchor]="service.id"
+          [class.is-active]="activeId() === service.id"
+          [attr.aria-current]="activeId() === service.id ? 'location' : null"
+          (click)="onAnchorClick($event, service.id)"
+        >
+          <span>{{ formatPosition(index) }}</span>
+          {{ service.title }}
+        </a>
+      }
+    </div>
+  </nav>
+
+  <ol class="service-list">
+    @for (service of services; track service.id; let index = $index) {
+      <li
+        #serviceRow
+        class="service-row"
+        kbkReveal
+        [id]="service.id"
+        [attr.data-tone]="service.tone"
+      >
+        <div class="service-row__panel">
+          <div class="service-row__top">
+            <div>
+              <p class="service-row__position">{{ formatPosition(index) }}</p>
+              <h2 class="section-title service-row__title">{{ service.title }}</h2>
+              <p class="service-row__summary">{{ service.summary }}</p>
+              <p class="service-row__work">{{ service.work }}</p>
+
+              <ul class="service-row__technologies">
+                @for (technology of service.technologies; track technology) {
+                  <li>{{ technology }}</li>
+                }
+              </ul>
+            </div>
+
+            <figure class="service-row__visual">
+              <img
+                [src]="service.image"
+                [alt]="service.alt"
+                width="1600"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+
+          <div class="service-row__details">
+            <div class="service-row__group">
+              <h3 class="service-row__heading">This is for you if</h3>
+              <ul class="service-row__needs">
+                @for (need of service.needs; track need) {
+                  <li>{{ need }}</li>
+                }
+              </ul>
+            </div>
+
+            <div class="service-row__group">
+              <h3 class="service-row__heading">What you get</h3>
+              <ul class="service-row__deliverables">
+                @for (deliverable of service.deliverables; track deliverable) {
+                  <li>{{ deliverable }}</li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <div class="service-row__footer">
+            <p class="service-row__note">
+              Not sure it fits your case? Ask anyway, I will tell you honestly.
+            </p>
+            <a
+              class="service-row__cta"
+              routerLink="/contact"
+              [queryParams]="{ service: service.id }"
+              [attr.aria-label]="'Discuss your project: ' + service.title"
+            >
+              Discuss your project
+              <svg kbkIcon="arrow"></svg>
+            </a>
+          </div>
+        </div>
+      </li>
+    }
+  </ol>
+
+  <section class="support">
+    <div class="support__panel" kbkReveal>
+      <div class="support__intro">
+        <p class="eyebrow eyebrow--small">Maintenance &amp; support</p>
+        <h2 class="section-title support__title">After launch, <em>it keeps running.</em></h2>
+        <p class="support__lead">
+          A project does not end at delivery. Security updates, fixes and small improvements keep an
+          application alive — and I can take over the maintenance of software I did not build.
+        </p>
+      </div>
+
+      <ul class="support__plans">
+        @for (plan of supportPlans; track plan.title) {
+          <li class="support__plan">
+            <span class="support__plan-icon"><svg [kbkIcon]="plan.icon"></svg></span>
+            <h3 class="support__plan-title">{{ plan.title }}</h3>
+            <p class="support__plan-description">{{ plan.description }}</p>
+            <ul class="support__plan-details">
+              @for (detail of plan.details; track detail) {
+                <li>{{ detail }}</li>
+              }
+            </ul>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="starting">
+    <div class="starting__inner">
+      <header class="starting__header" kbkReveal>
+        <p class="eyebrow eyebrow--small">Getting started</p>
+        <h2 class="section-title starting__title">Three steps, <em>no paperwork.</em></h2>
+        <p class="starting__lead">
+          No long forms, no commitment before we both know the project makes sense.
+        </p>
+      </header>
+
+      <ol class="starting__steps">
+        @for (step of startingSteps; track step.title; let index = $index) {
+          <li class="starting__step" kbkReveal [style.--reveal-delay]="index * 120 + 'ms'">
+            <p class="starting__step-number">{{ formatPosition(index) }}</p>
+            <h3 class="starting__step-title">{{ step.title }}</h3>
+            <p class="starting__step-description">{{ step.description }}</p>
+
+            <dl class="starting__step-meta">
+              <div>
+                <dt>When</dt>
+                <dd>{{ step.duration }}</dd>
+              </div>
+              <div>
+                <dt>You end up with</dt>
+                <dd>{{ step.outcome }}</dd>
+              </div>
+            </dl>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+</div>
+
+<kbk-cta-section shape="card" />

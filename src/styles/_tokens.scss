@@ -1,0 +1,47 @@
+:root {
+  --color-bg: #f4f2ed;
+  --color-surface: #ffffff;
+  --color-ink: #14110f;
+  --color-forest: #203429;
+  --color-forest-deep: #16241c;
+  --color-teal: #2e6e67;
+  --color-mint: #9fd3c9;
+  --color-muted: #6b6862;
+  --color-line: #ddd9d0;
+
+  --tone-teal-bg: #e2eeec;
+  --tone-teal-fg: #2e6e67;
+  --tone-sage-bg: #e6ece2;
+  --tone-sage-fg: #3f5b45;
+  --tone-peach-bg: #f6e7dc;
+  --tone-peach-fg: #a15b3b;
+  --tone-sand-bg: #efe8da;
+  --tone-sand-fg: #203429;
+  --tone-sky-bg: #e4e9f0;
+  --tone-sky-fg: #3e5c7e;
+  --tone-plum-bg: #ece6ef;
+  --tone-plum-fg: #6a4e7c;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-script: 'Caveat', cursive;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  --container-max: 1600px;
+  --page-gutter: clamp(1.5rem, 4vw, 4rem);
+  --header-height: 88px;
+  --rail-width: 88px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 1280px) {
+    --rail-width: 0px;
+  }
+}

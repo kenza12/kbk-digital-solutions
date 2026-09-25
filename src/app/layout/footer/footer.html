@@ -1,0 +1,61 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="site-footer__logo" src="kbk-mark-color.svg" alt="KBK — Kenza Bazi-Kabbaj" />
+      <p class="site-footer__tagline">
+        Web developer &amp; bioinformatician, turning ideas and complex data into reliable tools.
+      </p>
+      <p class="site-footer__location">
+        <svg kbkIcon="pin" [strokeWidth]="1.8"></svg>
+        <span>Based in France · Working remotely</span>
+      </p>
+    </div>
+
+    <nav class="site-footer__column" aria-label="Footer navigation">
+      <h2 class="site-footer__heading">Navigation</h2>
+      <ul class="site-footer__list">
+        @for (link of links; track link.route) {
+          <li>
+            <a [routerLink]="link.route">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="site-footer__column">
+      <h2 class="site-footer__heading">Get in touch</h2>
+      <ul class="site-footer__list site-footer__list--icons">
+        <li>
+          <a [href]="'mailto:' + email">
+            <span class="site-footer__icon"><svg kbkIcon="mail" [strokeWidth]="1.7"></svg></span>
+            {{ email }}
+          </a>
+        </li>
+        <li>
+          <a [href]="linkedinUrl" target="_blank" rel="noopener">
+            <span class="site-footer__icon"><svg kbkIcon="linkedin"></svg></span>
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a [href]="githubUrl" target="_blank" rel="noopener">
+            <span class="site-footer__icon"><svg kbkIcon="github"></svg></span>
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <p class="site-footer__copyright">© {{ year }} Kenza Bazi-Kabbaj. All rights reserved.</p>
+
+    <ul class="site-footer__legal">
+      @for (link of legalLinks; track link.route) {
+        <li>
+          <a [routerLink]="link.route">{{ link.label }}</a>
+        </li>
+      }
+    </ul>
+  </div>
+</footer>

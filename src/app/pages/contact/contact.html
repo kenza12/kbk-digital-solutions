@@ -1,0 +1,269 @@
+<div class="page">
+  <header class="page-hero contact-hero">
+    <div>
+      <p class="eyebrow eyebrow--large">Contact</p>
+      <h1 class="page-title contact-hero__title">Let's talk about <em>your project.</em></h1>
+      <p class="lead contact-hero__lead">
+        Tell me what you want to build or fix. A few lines are enough: I reply within 24 hours on
+        weekdays, with honest advice, even if I am not the right person for it.
+      </p>
+    </div>
+
+    <div class="contact-hero__status">
+      <span class="contact-hero__icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <path
+            d="M12.5 9h7.6l2.8 3.2H35.5a3 3 0 0 1 3 3V31h-29V12a3 3 0 0 1 3-3Z"
+            fill="currentColor"
+            fill-opacity="0.45"
+          />
+          <rect x="12" y="14.5" width="24" height="16" rx="2" style="fill: var(--color-bg)" />
+          <path
+            d="M8 19a3 3 0 0 1 3-3h8.2l2.8 3.3H37a3 3 0 0 1 3 3V36a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3Z"
+            fill="currentColor"
+          />
+          <circle cx="21" cy="27.5" r="1.3" style="fill: var(--color-bg)" />
+          <circle cx="27" cy="27.5" r="1.3" style="fill: var(--color-bg)" />
+          <path
+            d="M20.6 31.3a4.6 4.6 0 0 0 6.8 0"
+            fill="none"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            style="stroke: var(--color-bg)"
+          />
+        </svg>
+        <span class="contact-hero__pulse"></span>
+      </span>
+      <div>
+        <p class="contact-hero__availability">Open to new projects</p>
+        <p class="contact-hero__meta">Based in France · working remotely</p>
+        <p class="contact-hero__meta">Replies in English or French</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="contact-main">
+    @if (status() === 'sent') {
+      <section class="contact-panel contact-success" aria-live="polite">
+        <span class="contact-success__icon"><svg kbkIcon="check" [strokeWidth]="1.8"></svg></span>
+        <h2 class="contact-success__title">Thank you, {{ sentName() }}!</h2>
+        <p class="contact-success__text">
+          Your message is on its way. I will read it carefully and reply within 24 hours on
+          weekdays.
+        </p>
+        <button type="button" class="contact-success__again" (click)="startOver()">
+          Send another message
+        </button>
+      </section>
+    } @else {
+      <form class="contact-panel contact-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <p class="contact-form__hint" aria-hidden="true">2 minutes, promised</p>
+
+        <fieldset class="contact-form__step">
+          <legend class="contact-form__legend"><span>01</span>What can I help with?</legend>
+          <div class="contact-form__options">
+            @for (option of serviceOptions; track option.id) {
+              <label class="contact-form__option" [attr.data-tone]="option.tone">
+                <input type="radio" name="service" formControlName="service" [value]="option.id" />
+                <span class="contact-form__option-dot" aria-hidden="true"></span>
+                {{ option.label }}
+              </label>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="contact-form__step">
+          <legend class="contact-form__legend">
+            <span>02</span>Your situation <small>Optional</small>
+          </legend>
+
+          <p class="contact-form__sublabel">Where is the project today?</p>
+          <div class="contact-form__chips">
+            @for (option of stageOptions; track option.id) {
+              <label class="contact-form__chip">
+                <input type="radio" name="stage" formControlName="stage" [value]="option.id" />
+                {{ option.label }}
+              </label>
+            }
+          </div>
+
+          <p class="contact-form__sublabel">When would you like to start?</p>
+          <div class="contact-form__chips">
+            @for (option of startOptions; track option.id) {
+              <label class="contact-form__chip">
+                <input type="radio" name="start" formControlName="start" [value]="option.id" />
+                {{ option.label }}
+              </label>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="contact-form__step">
+          <legend class="contact-form__legend"><span>03</span>About you</legend>
+          <div class="contact-form__fields">
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="contact-name">Your name</label>
+              <input
+                id="contact-name"
+                class="contact-form__input"
+                type="text"
+                formControlName="name"
+                autocomplete="name"
+                [attr.aria-invalid]="showError('name')"
+                [attr.aria-describedby]="showError('name') ? 'contact-name-error' : null"
+              />
+              @if (showError('name')) {
+                <p id="contact-name-error" class="contact-form__error">Please tell me your name.</p>
+              }
+            </div>
+
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="contact-email">Your e-mail</label>
+              <input
+                id="contact-email"
+                class="contact-form__input"
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                [attr.aria-invalid]="showError('email')"
+                [attr.aria-describedby]="showError('email') ? 'contact-email-error' : null"
+              />
+              @if (showError('email')) {
+                <p id="contact-email-error" class="contact-form__error">
+                  Please enter a valid e-mail, so I can answer you.
+                </p>
+              }
+            </div>
+
+            <div class="contact-form__field contact-form__field--full">
+              <label class="contact-form__label" for="contact-company">
+                Company or organisation <small>Optional</small>
+              </label>
+              <input
+                id="contact-company"
+                class="contact-form__input"
+                type="text"
+                formControlName="company"
+                autocomplete="organization"
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="contact-form__step">
+          <legend class="contact-form__legend"><span>04</span>Your project</legend>
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="contact-message">Tell me a bit more</label>
+            <textarea
+              id="contact-message"
+              class="contact-form__input contact-form__textarea"
+              formControlName="message"
+              rows="6"
+              placeholder="What do you want to build or fix? Who will use it? Is there an existing tool, or a deadline?"
+              [attr.aria-invalid]="showError('message')"
+              [attr.aria-describedby]="showError('message') ? 'contact-message-error' : null"
+            ></textarea>
+            @if (showError('message')) {
+              <p id="contact-message-error" class="contact-form__error">
+                A few more words please (at least 20 characters).
+              </p>
+            }
+          </div>
+        </fieldset>
+
+        <div class="contact-form__honeypot" aria-hidden="true">
+          <label for="contact-website">Leave this field empty</label>
+          <input
+            id="contact-website"
+            type="text"
+            formControlName="website"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="contact-form__footer">
+          <p class="contact-form__privacy">
+            <span class="contact-form__privacy-icon"><svg kbkIcon="privacy"></svg></span>
+            Your details are only used to answer your message. They are never shared or used for
+            marketing.
+          </p>
+          <button type="submit" class="contact-form__submit" [disabled]="status() === 'sending'">
+            {{ status() === 'sending' ? 'Sending…' : 'Send my message' }}
+            <svg kbkIcon="arrow"></svg>
+          </button>
+        </div>
+
+        @if (status() === 'error') {
+          <p class="contact-form__alert" role="alert">
+            Something went wrong while sending. Please try again, or write to me directly at
+            <a [href]="'mailto:' + email">{{ email }}</a
+            >.
+          </p>
+        }
+      </form>
+    }
+
+    <aside class="contact-aside">
+      <div class="contact-card">
+        <p class="contact-card__eyebrow">Prefer e-mail?</p>
+        <a class="contact-card__email" [href]="'mailto:' + email">{{ email }}</a>
+        <div class="contact-card__actions">
+          <button
+            type="button"
+            class="contact-card__button"
+            [class.is-done]="copied()"
+            (click)="copyEmail()"
+          >
+            {{ copied() ? 'Copied!' : 'Copy address' }}
+          </button>
+          <a class="contact-card__button" [href]="'mailto:' + email">Open my mail app</a>
+        </div>
+      </div>
+
+      <div class="contact-card contact-card--dark">
+        <p class="contact-card__eyebrow">What happens next</p>
+        <ol class="contact-card__steps">
+          @for (step of nextSteps; track step.title; let index = $index) {
+            <li class="contact-card__step">
+              <span class="contact-card__step-number">{{ index + 1 }}</span>
+              <div>
+                <p class="contact-card__step-title">{{ step.title }}</p>
+                <p class="contact-card__step-text">{{ step.text }}</p>
+              </div>
+            </li>
+          }
+        </ol>
+      </div>
+    </aside>
+  </div>
+
+  <section class="page-section contact-faq">
+    <header class="contact-faq__header">
+      <p class="eyebrow eyebrow--small">Before you write</p>
+      <h2 class="section-title">Questions I often <em>get asked.</em></h2>
+    </header>
+
+    <figure class="contact-faq__visual">
+      <img
+        src="images/contact/faq.webp"
+        alt=""
+        width="924"
+        height="803"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="contact-faq__list">
+      @for (faq of faqs; track faq.question) {
+        <details class="contact-faq__item">
+          <summary class="contact-faq__question">
+            {{ faq.question }}<span class="contact-faq__icon" aria-hidden="true"></span>
+          </summary>
+          <p class="contact-faq__answer">{{ faq.answer }}</p>
+        </details>
+      }
+    </div>
+  </section>
+</div>

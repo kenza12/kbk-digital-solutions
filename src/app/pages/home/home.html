@@ -1,0 +1,295 @@
+<section class="hero">
+  <div class="hero__media">
+    <img
+      class="hero__photo"
+      src="hero-photo.webp"
+      srcset="hero-photo.webp 1100w, hero-photo@2x.webp 1199w"
+      sizes="55vw"
+      width="1100"
+      height="939"
+      alt="Kenza Bazi-Kabbaj"
+      fetchpriority="high"
+    />
+  </div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">
+      I build <br />
+      digital solutions <br />
+      that make <em>a difference.</em>
+    </h1>
+
+    <p class="hero__lead">
+      <strong>Web developer &amp; bioinformatician</strong> helping businesses turn ideas, data and
+      complex needs into reliable, efficient and user&#8209;friendly solutions.
+    </p>
+
+    <div class="hero__actions">
+      <kbk-action-button label="Explore my services" link="/services" variant="filled" />
+      <kbk-action-button label="Let's discuss your project" link="/contact" variant="outline" />
+    </div>
+  </div>
+
+  <figure class="hero__code" aria-hidden="true">
+    <div class="hero__code-dots"><span></span><span></span><span></span></div>
+    <pre class="hero__code-body"><code><span class="tok-comment"># from ideas to impact</span>
+<span class="tok-keyword">def</span> <span class="tok-function">build_solution</span>():
+    <span class="tok-keyword">return</span> (
+        <span class="tok-string">"reliable"</span>,
+        <span class="tok-string">"scalable"</span>,
+        <span class="tok-string">"user_friendly"</span>,
+    )</code></pre>
+  </figure>
+
+  <p class="hero__signature">Understand the need.<br />Build it right.<br />Keep it simple.</p>
+</section>
+
+<section class="stats-bar">
+  <div class="stats-bar__inner">
+    @for (stat of stats; track stat.title) {
+      <div class="stats-bar__item">
+        <div class="stat-item" [attr.data-tone]="stat.tone">
+          <span class="stat-item__icon"><svg [kbkIcon]="stat.icon"></svg></span>
+          <span class="stat-item__text">
+            <strong class="stat-item__title">{{ stat.title }}</strong>
+            <span class="stat-item__subtitle">{{ stat.subtitle }}</span>
+          </span>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="services" id="services">
+  <header class="section-header">
+    <h2 class="section-header__title">What can I help you&nbsp;<em>build?</em></h2>
+    <p class="section-header__intro">
+      Whether you're starting from scratch or improving the tools you already have, here's how I can
+      help.
+    </p>
+  </header>
+
+  <div class="services__grid">
+    @for (offering of offerings; track offering.title; let index = $index) {
+      <article class="service-card">
+        <p class="service-card__position">{{ formatPosition(index) }}</p>
+
+        <svg class="service-card__diagram" viewBox="0 0 240 90" aria-hidden="true">
+          @switch (offering.diagram) {
+            @case ('web-app') {
+              <svg:rect class="line" pathLength="1" x="20" y="6" width="200" height="78" rx="6" />
+              <svg:line class="line" pathLength="1" x1="20" y1="20" x2="220" y2="20" />
+              <svg:line class="line" pathLength="1" x1="62" y1="20" x2="62" y2="84" />
+              <svg:line class="line" pathLength="1" x1="30" y1="32" x2="52" y2="32" />
+              <svg:line class="line" pathLength="1" x1="30" y1="44" x2="52" y2="44" />
+              <svg:line class="line" pathLength="1" x1="30" y1="56" x2="52" y2="56" />
+              <svg:rect class="line" pathLength="1" x="76" y="30" width="126" height="11" rx="3" />
+              <svg:rect class="line" pathLength="1" x="76" y="48" width="126" height="11" rx="3" />
+              <svg:rect
+                class="line line--accent"
+                pathLength="1"
+                x="76"
+                y="66"
+                width="46"
+                height="11"
+                rx="5.5"
+              />
+              <svg:circle class="dot" cx="28" cy="13" r="2" />
+              <svg:circle class="dot" cx="35" cy="13" r="2" />
+              <svg:circle class="dot" cx="42" cy="13" r="2" />
+            }
+            @case ('api') {
+              <svg:rect class="line" pathLength="1" x="18" y="28" width="56" height="34" rx="6" />
+              <svg:line class="line" pathLength="1" x1="28" y1="40" x2="62" y2="40" />
+              <svg:line class="line" pathLength="1" x1="28" y1="50" x2="52" y2="50" />
+              <svg:line class="line line--accent" pathLength="1" x1="74" y1="45" x2="104" y2="45" />
+              <svg:circle class="line line--accent" pathLength="1" cx="120" cy="45" r="15" />
+              <svg:path
+                class="line line--accent"
+                pathLength="1"
+                d="M135 40 C150 40 152 23 168 23"
+              />
+              <svg:path
+                class="line line--accent"
+                pathLength="1"
+                d="M135 50 C150 50 152 67 168 67"
+              />
+              <svg:rect class="line" pathLength="1" x="168" y="10" width="54" height="26" rx="6" />
+              <svg:rect class="line" pathLength="1" x="168" y="54" width="54" height="26" rx="6" />
+              <svg:line class="line" pathLength="1" x1="178" y1="23" x2="208" y2="23" />
+              <svg:line class="line" pathLength="1" x1="178" y1="67" x2="208" y2="67" />
+              <svg:circle class="dot" cx="120" cy="45" r="4" />
+            }
+            @case ('quality') {
+              <svg:circle class="line" pathLength="1" cx="45" cy="45" r="17" />
+              <svg:circle class="line" pathLength="1" cx="120" cy="45" r="17" />
+              <svg:circle class="line" pathLength="1" cx="195" cy="45" r="17" />
+              <svg:line class="line" pathLength="1" x1="62" y1="45" x2="103" y2="45" />
+              <svg:line class="line" pathLength="1" x1="137" y1="45" x2="178" y2="45" />
+              <svg:path class="line line--accent" pathLength="1" d="M37 45 L43 51 L54 39" />
+              <svg:path class="line line--accent" pathLength="1" d="M112 45 L118 51 L129 39" />
+              <svg:path class="line line--accent" pathLength="1" d="M187 45 L193 51 L204 39" />
+            }
+            @case ('pipeline') {
+              <svg:circle class="dot" cx="24" cy="30" r="2.5" />
+              <svg:circle class="dot" cx="38" cy="58" r="2.5" />
+              <svg:circle class="dot" cx="30" cy="46" r="2.5" />
+              <svg:circle class="dot" cx="48" cy="24" r="2.5" />
+              <svg:circle class="dot" cx="52" cy="66" r="2.5" />
+              <svg:circle class="dot" cx="44" cy="42" r="2.5" />
+              <svg:circle class="dot" cx="20" cy="62" r="2.5" />
+              <svg:path class="line" pathLength="1" d="M70 18 L112 36 L112 54 L70 72 Z" />
+              <svg:line
+                class="line line--accent"
+                pathLength="1"
+                x1="112"
+                y1="45"
+                x2="150"
+                y2="45"
+              />
+              <svg:line class="line" pathLength="1" x1="158" y1="80" x2="226" y2="80" />
+              <svg:rect
+                class="line line--accent"
+                pathLength="1"
+                x="164"
+                y="58"
+                width="11"
+                height="22"
+                rx="2"
+              />
+              <svg:rect
+                class="line line--accent"
+                pathLength="1"
+                x="182"
+                y="44"
+                width="11"
+                height="36"
+                rx="2"
+              />
+              <svg:rect
+                class="line line--accent"
+                pathLength="1"
+                x="200"
+                y="28"
+                width="11"
+                height="52"
+                rx="2"
+              />
+            }
+          }
+        </svg>
+
+        <h3 class="service-card__title">{{ offering.title }}</h3>
+        <p class="service-card__description">{{ offering.description }}</p>
+
+        <ul class="service-card__tags">
+          @for (tag of offering.tags; track tag.label) {
+            <li class="service-card__tag" [attr.data-tone]="tag.tone">{{ tag.label }}</li>
+          }
+        </ul>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="approach" id="approach" kbkReveal [revealThreshold]="0.3">
+  <header class="section-header">
+    <h2 class="section-header__title">A clear path to&nbsp;<em>real results.</em></h2>
+    <p class="section-header__intro">
+      No black box: you know what happens at every stage, and what comes out of it.
+    </p>
+  </header>
+
+  <ol class="approach__steps">
+    @for (step of steps; track step.title; let index = $index; let last = $last) {
+      <li class="approach__step" [style.--step-index]="index">
+        <div class="process-step" [attr.data-tone]="step.tone">
+          <span class="process-step__icon" [class.is-highlighted]="last">
+            <svg [kbkIcon]="step.icon"></svg>
+          </span>
+          <h3 class="process-step__title">{{ step.title }}</h3>
+          <p class="process-step__description">{{ step.description }}</p>
+        </div>
+      </li>
+    }
+  </ol>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="testimonials__panel">
+    <div class="testimonials__inner">
+      <div class="testimonials__intro">
+        <p class="testimonials__eyebrow">Recommendations</p>
+        <h2 class="testimonials__title">What the people I worked <em>with say.</em></h2>
+        <p class="testimonials__lead">
+          Quoted word for word from written letters and LinkedIn recommendations.
+        </p>
+
+        <ul class="testimonials__organisations">
+          @for (organisation of organisations; track organisation) {
+            <li class="testimonials__organisation">{{ organisation }}</li>
+          }
+        </ul>
+      </div>
+
+      <div class="testimonials__carousel">
+        <button
+          type="button"
+          class="testimonials__arrow"
+          aria-label="Previous recommendation"
+          (click)="showTestimonial(activeIndex() - 1)"
+        >
+          <svg kbkIcon="chevron-left"></svg>
+        </button>
+
+        <div class="testimonials__panel-inner">
+          <figure class="testimonials__figure" aria-live="polite">
+            <svg class="testimonials__mark" kbkIcon="quote"></svg>
+
+            <blockquote
+              class="testimonials__quote"
+              [attr.lang]="activeTestimonial().language"
+              [textContent]="activeTestimonial().quote"
+            ></blockquote>
+
+            <figcaption class="testimonials__author">
+              <span class="testimonials__name">{{ activeTestimonial().author }}</span>
+              <span class="testimonials__role">
+                {{ activeTestimonial().role }} · {{ activeTestimonial().organisation }}
+              </span>
+              @if (activeTestimonial().source === 'letter') {
+                <span class="testimonials__source" data-tone="teal">Written letter</span>
+              } @else {
+                <span class="testimonials__source" data-tone="sky">LinkedIn</span>
+              }
+            </figcaption>
+          </figure>
+
+          <div class="testimonials__dots">
+            @for (testimonial of testimonials; track testimonial.author; let index = $index) {
+              <button
+                type="button"
+                class="testimonials__dot"
+                [class.is-active]="index === activeIndex()"
+                [attr.aria-label]="'Show recommendation from ' + testimonial.author"
+                [attr.aria-current]="index === activeIndex() ? 'true' : null"
+                (click)="showTestimonial(index)"
+              ></button>
+            }
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="testimonials__arrow"
+          aria-label="Next recommendation"
+          (click)="showTestimonial(activeIndex() + 1)"
+        >
+          <svg kbkIcon="chevron-right"></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<kbk-cta-section />

@@ -1,0 +1,34 @@
+<aside class="social-rail" aria-label="Social links">
+  <div class="social-rail__panel">
+    <div class="social-rail__ticker" aria-hidden="true">
+      <div class="social-rail__ticker-track">
+        @for (copy of tickerCopies; track copy) {
+          <p class="social-rail__ticker-phrase">
+            @for (keyword of keywords; track keyword) {
+              <span>{{ keyword }}</span>
+              <svg class="social-rail__ticker-separator" viewBox="0 0 12 12">
+                <rect x="4" y="0" width="4" height="4" />
+                <rect x="0" y="4" width="4" height="4" />
+                <rect x="4" y="8" width="4" height="4" />
+              </svg>
+            }
+          </p>
+        }
+      </div>
+    </div>
+
+    <div class="social-rail__links">
+      @for (link of links; track link.icon) {
+        <a
+          class="social-rail__link"
+          [href]="link.url"
+          [attr.aria-label]="link.label"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg [kbkIcon]="link.icon" [strokeWidth]="1.8"></svg>
+        </a>
+      }
+    </div>
+  </div>
+</aside>
